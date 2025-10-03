@@ -32,7 +32,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                 {({ processing, errors }) => (
                     <>
                         <div className="grid gap-6">
-                            <div className="grid gap-2">
+                            {/* <div className="grid gap-2">
                                 <Label htmlFor="email">Email address</Label>
                                 <Input
                                     id="email"
@@ -45,6 +45,21 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                                     placeholder="email@example.com"
                                 />
                                 <InputError message={errors.email} />
+                            </div> */}
+                            
+                            <div className="grid gap-2">
+                                <Label htmlFor="username">Username</Label>
+                                <Input
+                                    id="username"
+                                    type="username"
+                                    name="username"
+                                    required
+                                    autoFocus
+                                    tabIndex={1}
+                                    autoComplete="username"
+                                    placeholder="example"
+                                />
+                                <InputError message={errors.username} />
                             </div>
 
                             <div className="grid gap-2">

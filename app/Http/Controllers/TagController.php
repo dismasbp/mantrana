@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TagController extends Controller
 {
@@ -12,7 +13,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::latest()->paginate(10);
+        return Inertia::render('office/tag/index', [
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -28,7 +32,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|unique:tags,name',
+        ]);
+
+        Tag::create($data);
+
+        return redirect()->back()->with('success', 'Tag created.');
     }
 
     /**
@@ -44,7 +54,9 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return Inertia::render('office/tag/edit', [
+            'tag' => $tag,
+        ]);
     }
 
     /**
@@ -52,7 +64,13 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|unique:tags,name,' . $tag->id,
+        ]);
+
+        $tag->update($data);
+
+        return redirect()->route('office.tag.index')->with('success', 'Tag updated.');
     }
 
     /**
@@ -60,6 +78,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return redirect()->back()->with('success', 'Tag deleted.');
     }
 }

@@ -33,11 +33,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('title')->unique();
+            $table->text('fulltext');
             $table->string('photo');
             $table->string('photo_alt')->nullable();
-            $table->text('photo_caption')->nullable();
+            $table->longText('photo_caption')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
+            $table->string('slug')->unique();
+            $table->text('code_snippet');
             $table->timestamps();
         });
 

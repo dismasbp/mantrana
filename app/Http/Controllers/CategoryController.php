@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::latest()->paginate(10);
+        return Inertia::render('office/category/index', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -28,7 +32,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|unique:categories,name',
+            'description' => 'nullable|string',
+        ]);
+
+        Category::create($data);
+
+        return redirect()->back()->with('success', 'Category created.');
     }
 
     /**
@@ -44,7 +55,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return Inertia::render('office/category/edit', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -52,7 +65,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|unique:categories,name,' . $category->id,
+            'description' => 'nullable|string',
+        ]);
+
+        $category->update($data);
+
+        return redirect()->route('office.category.index')->with('success', 'Category updated.');
     }
 
     /**
@@ -60,6 +80,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->back()->with('success', 'Category deleted.');
     }
 }

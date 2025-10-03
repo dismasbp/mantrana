@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Article extends Model
 {
@@ -12,12 +13,35 @@ class Article extends Model
     protected $fillable = [
         'category_id',
         'title',
+        'fulltext',
         'photo',
         'photo_alt',
         'photo_caption',
         'meta_title',
         'meta_description',
+        'slug',
+        'code_snippet',
     ];
+
+    /**
+     * Slug Generator
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($article) {
+            if (empty($article->slug)) {
+                $article->slug = Str::slug($article->title);
+            }
+        });
+
+        static::updating(function ($article) {
+            if ($article->isDirty('title')) {
+                $article->slug = Str::slug($article->title);
+            }
+        });
+    }
 
     /**
      * Relation with Category (Many-to-One)
@@ -32,7 +56,6 @@ class Article extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'tag_relations')
-            ->withTimestamps();
+        return $this->belongsToMany(Tag::class, 'tag_relations');
     }
 }
