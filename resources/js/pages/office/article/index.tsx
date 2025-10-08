@@ -288,6 +288,18 @@ export default function Article({ categories, tags }: ArticleProps) {
                                     }
                                     data={form.fulltext}
                                 />
+
+                                <style>
+                                    {`
+                                        .ck-editor__editable {
+                                            border: 1px solid #ccc;
+                                            border-radius: 4px;
+                                            min-height: 500px;
+                                            padding: 8px;
+                                            font-family: inherit;
+                                        }
+                                    `}
+                                </style>
                             </div>
 
                             {/* Meta Description Input */}
