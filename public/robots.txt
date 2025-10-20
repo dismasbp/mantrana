@@ -1,2 +1,6 @@
 User-agent: *
 Disallow:
+
+
+Sitemap: https://mantrana.co.id/sitemap.xml
+Sitemap: https://mantrana.local/sitemap.xml

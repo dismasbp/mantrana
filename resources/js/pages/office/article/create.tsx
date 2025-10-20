@@ -7,38 +7,31 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import office from "@/routes/office";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { ClassicEditor, Alignment, Bold, Essentials, Heading, Indent, IndentBlock, Italic, Link, List, MediaEmbed, Paragraph, Table as CKTable, Undo, Font, FontColor, FontBackgroundColor, Image, ImageCaption, ImageResize, ImageStyle,ImageToolbar, LinkImage, ImageUpload, FileRepository, } from "ckeditor5";
+import {
+    ClassicEditor, Alignment, Bold, Essentials, Heading, Indent, IndentBlock, Italic,
+    Link, List, MediaEmbed, Paragraph, Table as CKTable, Undo,
+    Font, FontColor, FontBackgroundColor, Image, ImageCaption, ImageResize, ImageStyle,
+	ImageToolbar, LinkImage, ImageUpload, FileRepository,
+} from "ckeditor5";
 import "ckeditor5/ckeditor5.css";
 import { CustomUploadAdapterPlugin } from "@/utils/UploadAdapter";
 import ReactSelect from "react-select";
 
-interface Article {
+interface ArticleProps {
+    categories: { id: number; name: string }[];
+    tags: { id: number; name: string }[];
+}
+
+interface ArticleItem {
     id: number;
     title: string;
-    category_id: number;
-    fulltext?: string;
-    photo?: string;
-    photo_alt?: string;
-    photo_caption?: string;
-    meta_title?: string;
-    meta_description?: string;
-    code_snippet?: string;
-    tags?: { id: number; name: string }[];
-}
-
-interface Category {
-    id: number;
-    name: string;
-}
-
-interface Tag {
-    id: number;
-    name: string;
+    category_id: string;
+    category_name: string | null;
 }
 
 const breadcrumbs: BreadcrumbItem[] = [
     { title: "Article", href: office.article.index().url },
-    { title: "Edit", href: "#" },
+    { title: "Create", href: "#" },
 ];
 
 const selectCustomStyles = {
@@ -118,67 +111,107 @@ const selectTheme = (baseTheme: any) => {
     };
 };
 
-export default function ArticleEdit() {
-    const { article, categories, tags } = usePage<{ article: Article; categories: Category[]; tags: Tag[] }>().props;
+export default function Article({ categories, tags }: ArticleProps) {
+    const { articles } = usePage<{ articles: any }>().props;
+    const items: ArticleItem[] = articles?.data ?? [];
 
     const [form, setForm] = useState({
-        _method: 'put',
-        title: article.title,
-        category_id: String(article.category_id),
-        fulltext: article.fulltext ?? "",
+        category_id: "",
+        title: "",
+        fulltext: "",
         photo: null as File | null,
-        photo_alt: article.photo_alt ?? "",
-        photo_caption: article.photo_caption ?? "",
-        meta_title: article.meta_title ?? "",
-        meta_description: article.meta_description ?? "",
-        code_snippet: article.code_snippet ?? "",
-        tags: article.tags?.map(t => t.id) ?? [],
+        photo_alt: "",
+        photo_caption: "",
+        meta_title: "",
+        meta_description: "",
+        code_snippet: "",
+        tags: [] as number[],
     });
 
-    const [previewOpen, setPreviewOpen] = useState(false);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
         setForm({ ...form, [e.target.name]: e.target.value });
-    };
 
     const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) setForm({ ...form, photo: e.target.files[0] });
+        if (e.target.files && e.target.files[0])
+            setForm({ ...form, photo: e.target.files[0] });
     };
-
+    
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        router.post(office.article.update(article.id).url, form, {
-            forceFormData: true,
+        router.post(office.article.store().url, form, {
+            onSuccess: () => {
+                setForm({
+                    category_id: "",
+                    title: "",
+                    fulltext: "",
+                    photo: null,
+                    photo_alt: "",
+                    photo_caption: "",
+                    meta_title: "",
+                    meta_description: "",
+                    code_snippet: "",
+                    tags: [],
+                });
+            },
         });
     };
 
-    const categoryOptions = categories.map(cat => ({ value: String(cat.id), label: cat.name }));
-    const tagOptions = tags.map(tag => ({ value: tag.id, label: tag.name }));
+    const categoryOptions = categories.map(cat => ({
+        value: String(cat.id),
+        label: cat.name,
+    }));
+
+    const tagOptions = tags.map(tag => ({
+        value: tag.id,
+        label: tag.name,
+    }));
+
+    // Preview
+    const [previewOpen, setPreviewOpen] = useState(false);
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Edit Article" />
+            <Head>
+                <title>Article</title>
+                <meta name="description" content="Manage articles" />
+            </Head>
 
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <form onSubmit={handleSubmit} className="space-y-4">
-
+                    {/* Title input */}
                     <div>
                         <Label htmlFor="title">Title</Label>
-                        <Input id="title" name="title" value={form.title} onChange={handleChange} className="mt-2" />
+                        <Input
+                            id="title"
+                            name="title"
+                            value={form.title}
+                            onChange={handleChange}
+                            className="mt-2"
+                        />
                     </div>
 
+                    {/* Meta Title Input */}
                     <div>
                         <Label htmlFor="meta_title">Meta Title</Label>
-                        <Input id="meta_title" name="meta_title" value={form.meta_title} onChange={handleChange} className="mt-2" />
+                        <Input
+                            id="meta_title"
+                            name="meta_title"
+                            value={form.meta_title}
+                            onChange={handleChange}
+                            className="mt-2"
+                        />
                     </div>
 
+                    {/* Category select */}
                     <div>
                         <Label htmlFor="category_id">Category</Label>
                         <ReactSelect
                             className="mt-2"
                             options={categoryOptions}
                             value={categoryOptions.find(opt => opt.value === form.category_id) || null}
-                            onChange={selected => setForm({ ...form, category_id: selected ? selected.value : "" })}
+                            onChange={selected =>
+                                setForm({ ...form, category_id: selected ? selected.value : "" })
+                            }
                             placeholder="Select category..."
                             isClearable
                             styles={selectCustomStyles}
@@ -186,6 +219,7 @@ export default function ArticleEdit() {
                         />
                     </div>
 
+                    {/* Content */}
                     <div>
                         <label className="block text-sm font-medium mt-4">Content</label>
                         <CKEditor
@@ -218,8 +252,10 @@ export default function ArticleEdit() {
                                     }
                                 }
                             }}
+                            onChange={(_, editor) =>
+                                setForm({ ...form, fulltext: editor.getData() })
+                            }
                             data={form.fulltext}
-                            onChange={(_, editor) => setForm({ ...form, fulltext: editor.getData() })}
                         />
 
                         <style>
@@ -250,19 +286,48 @@ export default function ArticleEdit() {
                         </style>
                     </div>
 
+                    {/* Meta Description Input */}
                     <div>
                         <Label htmlFor="meta_description">Meta Description</Label>
-                        <Input id="meta_description" name="meta_description" value={form.meta_description} onChange={handleChange} className="mt-2" />
+                        <Input
+                            id="meta_description"
+                            name="meta_description"
+                            value={form.meta_description}
+                            onChange={handleChange}
+                            className="mt-2"
+                        />
                     </div>
 
+                    {/* Photo */}
                     <div>
                         <Label htmlFor="photo">Photo</Label>
-                        <Input id="photo" type="file" onChange={handlePhoto} className="mt-2" />
-                        <Input id="photo_alt" name="photo_alt" placeholder="Alt text" value={form.photo_alt} onChange={handleChange} className="mt-2" />
-                        <Input id="photo_caption" name="photo_caption" placeholder="Caption" value={form.photo_caption} onChange={handleChange} className="mt-2" />
+                        <Input
+                            id="photo"
+                            type="file"
+                            onChange={handlePhoto}
+                            className="mt-2"
+                        />
+                        <Input
+                            id="photo_alt"
+                            name="photo_alt"
+                            placeholder="Alt text"
+                            value={form.photo_alt}
+                            onChange={handleChange}
+                            className="mt-2"
+                        />
+                        <Input
+                            id="photo_caption"
+                            name="photo_caption"
+                            placeholder="Caption"
+                            value={form.photo_caption}
+                            onChange={handleChange}
+                            className="mt-2"
+                        />
                     </div>
 
+                    {/* Tags */}
                     <div>
+                        <Label htmlFor="tag">Tags</Label>
                         <ReactSelect
                             className="mt-2"
                             options={tagOptions}
@@ -278,53 +343,69 @@ export default function ArticleEdit() {
                         />
                     </div>
 
+                    {/* Code Snippet */}
                     <div>
                         <Label htmlFor="code_snippet">Code Snippet</Label>
-                        <Input id="code_snippet" name="code_snippet" value={form.code_snippet} onChange={handleChange} className="mt-2" />
+                        <Input
+                            id="code_snippet"
+                            name="code_snippet"
+                            value={form.code_snippet}
+                            onChange={handleChange}
+                            className="mt-2"
+                        />
                     </div>
-
+                    
                     <div className="flex gap-2 mt-4">
-                        <Button type="button" variant="secondary" onClick={() => setPreviewOpen(true)}>Preview</Button>
-                        <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white">Update Article</Button>
+                        <Button
+                            type="button"
+                            variant="secondary"
+                            onClick={() => setPreviewOpen(true)}
+                        >
+                            Preview
+                        </Button>
+
+                        <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white">
+                            Save Article
+                        </Button>
                     </div>
                 </form>
             </div>
 
             {/* Preview Modal */}
             {previewOpen && (
-                <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-black/70 p-4">
-                    <div className="bg-white dark:bg-gray-800 w-full max-w-5xl p-6 rounded-lg shadow-lg">
-                    <h2 className="text-2xl font-bold mb-4 text-center">Preview Article</h2>
-                    <h3 className="text-xl font-semibold text-center">{form.title}</h3>
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-[90%] max-w-2xl overflow-auto">
+                        <h2 className="text-xl font-bold mb-4">Preview Article</h2>
 
-                    <div className="mt-4 flex justify-center">
-                        <img
-                            src={form.photo
-                                ? URL.createObjectURL(form.photo)
-                                : article.photo
-                                    ? `/storage/${article.photo}`
-                                    : ""
-                            }
-                            alt={form.photo_alt || "Preview Photo"}
-                            className="max-w-full rounded"
-                        />
-                    </div>
+                        <h3 className="text-lg font-semibold text-center">{form.title}</h3>
 
-                    <p className="text-sm text-gray-500 mb-2">Category: {categories.find(c => String(c.id) === form.category_id)?.name || "-"}</p>
-                    <p className="text-sm text-gray-500 mb-2">
-                        Tags: {form.tags.length > 0
-                        ? form.tags.map(tagId => tags.find(t => t.id === tagId)?.name).filter(Boolean).join(", ")
-                        : "-"}
-                    </p>
+                        {form.photo && (
+                            <div className="mt-4">
+                                <img
+                                    src={URL.createObjectURL(form.photo)}
+                                    alt={form.photo_alt || "Preview Photo"}
+                                    className="max-w-full rounded"
+                                />
+                            </div>
+                        )}
+                        <p className="text-sm text-gray-500 mb-2">Category: {categories.find(c => String(c.id) === form.category_id)?.name || "-"}</p>
+                        <p className="text-sm text-gray-500 mb-2">
+                            Tags: {form.tags.length > 0
+                                ? form.tags
+                                    .map(tagId => tags.find(t => t.id === tagId)?.name)
+                                    .filter(Boolean)
+                                    .join(", ")
+                                : "-"}
+                        </p>
 
-                    <div className="prose dark:prose-invert" dangerouslySetInnerHTML={{ __html: form.fulltext }} />
+                        <div className="prose dark:prose-invert" dangerouslySetInnerHTML={{ __html: form.fulltext }} />
 
-                    <div className="mt-4 flex justify-end">
-                        <Button variant="outline" onClick={() => setPreviewOpen(false)}>Close</Button>
-                    </div>
+                        <div className="mt-4 flex justify-end gap-2">
+                            <Button variant="outline" onClick={() => setPreviewOpen(false)}>Close</Button>
+                        </div>
                     </div>
                 </div>
-                )}
+            )}
         </AppLayout>
     );
 }

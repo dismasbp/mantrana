@@ -39,7 +39,7 @@ export default function CategoryEdit() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Edit Category" />
 
-            <div className="p-6 space-y-4 max-w-lg">
+            <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <Label htmlFor="name">Name</Label>

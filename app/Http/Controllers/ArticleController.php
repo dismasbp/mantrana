@@ -17,8 +17,6 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::all();
-        $tags       = Tag::all();
         $query      = Article::with(['category', 'tags']);
 
         if ($search = $request->get('search')) {
@@ -35,6 +33,18 @@ class ArticleController extends Controller
 
         return Inertia::render('office/article/index', [
             'articles'   => $articles,
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $categories = Category::all();
+        $tags       = Tag::all();
+
+        return Inertia::render('office/article/create', [
             'categories' => $categories,
             'tags'       => $tags,
         ]);

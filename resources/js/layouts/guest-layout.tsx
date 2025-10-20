@@ -61,10 +61,10 @@ export default function GuestLayout({ title, description, children }: GuestLayou
                 {description && <meta name="description" content={description} />}
             </Head>
 
-            <div className="flex flex-col min-h-screen">
+            <div className="bg-[#13161B] flex flex-col min-h-screen">
                 <Navbar links={navLinks} />
 
-                <main className="flex-1 bg-gray-50 pt-20">
+                <main className="flex-1 pt-20">
                     {children}
                 </main>
 

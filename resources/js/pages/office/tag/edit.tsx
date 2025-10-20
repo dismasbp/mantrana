@@ -34,7 +34,7 @@ export default function TagEdit() {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Edit Tag" />
-            <div className="p-6 space-y-4 max-w-md">
+            <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <Label htmlFor="name">Tag Name</Label>

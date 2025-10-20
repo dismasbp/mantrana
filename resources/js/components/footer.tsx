@@ -1,93 +1,272 @@
 import { Link } from "@inertiajs/react";
+import {
+    Facebook,
+    Instagram,
+    Phone,
+    Mail,
+    MapPin,
+} from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-gray-300">
-            <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-                {/* Logo + Description */}
-                <div>
-                    <img
-                        src="/images/logo-white.svg"
-                        alt="Mantrana"
-                        className="h-12 mb-4"
-                    />
-                    <p className="text-sm leading-relaxed">
+        <footer className="bg-gradient-to-t from-[#0A0D12] to-[#435478] text-gray-300" style={{ fontFamily: 'Helvetica, sans-serif' }}>
+            <div className="container mx-auto px-6 py-16 grid grid-cols-2 lg:grid-cols-[1fr_0.5fr_0.5fr] gap-12">
+                {/* Left Section */}
+                <div className="col-span-2 lg:col-span-1">
+                    {/* Logo */}
+                    <svg
+                        id="Layer_1"
+                        data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1080 184.00649"
+                        className="w-40 h-10 fill-current mb-3"
+                        aria-hidden="true"
+                    >
+                        <path
+                            fill="#fff"
+                            d="M682.15002,52.2752l.01305.00121c1.62361.14997,2.86569,1.51207,2.86569,3.14259l-.00007,27.89897c0,1.82891-1.56594,3.25805-3.38921,3.11445-.79345-.06249-1.54353-.11061-2.25027-.14454-1.645-.07692-2.9772-.11794-3.99455-.11794-13.47277,0-22.51923,4.38734-27.13938,13.15895-2.58441,4.93397-3.87764,12.53234-3.87764,22.79203v61.21153h-33.71834v-112.0834c0-8.82452,7.15368-15.9782,15.9782-15.9782h.00003c8.82452,0,15.9782,7.15368,15.9782,15.9782v6.34413c5.16984-8.53573,9.67205-14.37219,13.51072-17.50527,6.26617-5.24676,14.41116-7.87219,24.43805-7.87219.62559,0,1.15478.02051,1.58551.05948Z"
+                        />
+                        <rect
+                            fill="#0056D6"
+                            x="301.37846"
+                            y="-12.084"
+                            width="26.7622"
+                            height="207.70956"
+                            rx="13.28557"
+                            ry="13.28557"
+                            transform="translate(-3.71563 169.67463) rotate(-29.99998)"
+                        />
+                        <path
+                            fill="#0056D6"
+                            d="M319.50844,158.83493c0,8.52197-4.41367,16.79936-12.32454,21.36571-11.79769,6.80386-26.87148,2.77199-33.67515-9.0257l-16.43284-28.44437-7.10904-12.32472-.37435-.64914-.00746-.00746-.01529-.02312-.87826-1.52721c-.00764-.0151-.01529-.02274-.02293-.03803l-.01529-.02293-.02274-.04586c-.00783-.01529-.01529-.02293-.02312-.03822l-.33594-.59545-1.65697-2.87136-.29791-.51156-3.64988-6.3074c-.03822-.0535-.08408-.12975-.12994-.1909l-.00764-.00764-.00746-.02274c-.01529-.03057-.04586-.06115-.07644-.09937-.06879-.09937-.15268-.1909-.23676-.27498-.02293-.02274-.0535-.05332-.07644-.09154,0,0-.02274-.00764-.02274-.01529l-.01529-.01529c-.0535-.04586-.11465-.09154-.16816-.12975-.16778-.14523-.37397-.27498-.56488-.3818-.00783,0-.01529-.00764-.01529-.00764-.11465-.06115-.21383-.10701-.32084-.13758-.06096-.03057-.12975-.04567-.1909-.06861-.00764-.00764-.03039-.00764-.03822-.01529-.3283-.09918-.67188-.14504-1.03076-.13758h-.00764c-.52684.00783-1.06898.15287-1.56543.43531-.4506.26734-.81711.61857-1.08426,1.0233-.0865.15268-.17319.30555-.25969.45824l-.83221,1.42785-.77889,1.34396-.00764.00764-.03057.06115c-1.60365,3.32158-1.58836,7.33052.39709,10.76675l.06861.11465c.08408.14504.1758.29772.26734.42748,0,.01529.00764.01529.00764.01529.29008.37435.58035.75615.8475,1.15305,0,.01529.01529.02293.02293.03057.51939.74068,1.0233,1.51193,1.4739,2.3214l.206.33594c.72558,1.26752,1.35943,2.55051,1.89392,3.85625.44277,1.07681.82457,2.17635,1.12248,3.26062.03803.14504.07625.27479.12211.40473.06115.24441.1374.49627.19855.75596,3.2759,13.30198-2.42822,27.69605-14.8827,34.90445-4.98638,2.88646-10.42316,4.25334-15.79134,4.25334-10.91198,0-21.53387-5.66609-27.39068-15.79134l-.20619-.33613c-8.72798-15.11946-3.56599-34.4615,11.55347-43.18948,6.03242-3.49738,12.7522-4.76509,19.18171-4.07009.20619.04586.39709.06115.59564.08389.3818.04586.77125.06115,1.1607.06115,1.95488,0,3.93269-.50391,5.74234-1.5425,1.59601-.93158,2.88646-2.17635,3.84097-3.61185l.02293-.03822.61092-1.07662,4.01639-6.95654.01529-.02293.00783-.02274c.86279-1.64951,1.32103-3.48974,1.32103-5.36054,0-.90119-.10701-1.80984-.32849-2.71084-.02293-.09937-.05332-.1909-.06861-.28262-.02293-.04567-.03822-.09154-.04586-.14504-.11447-.38945-.24441-.79418-.41238-1.17598-.1374-.35123-.29791-.69482-.49627-1.03076-1.62658-2.81767-3.24533-5.64316-4.87191-8.46083-6.81132-11.79005-2.76416-26.86365,9.01825-33.66751,11.79005-6.81132,26.86365-2.7718,33.68279,9.0106l48.10725,83.33236c2.23732,3.88683,3.29865,8.12488,3.29865,12.30944Z"
+                        />
+                        <path
+                            fill="#fff"
+                            d="M511.48703,80.41251v102.78924h-34.32429v-89.63995c0-7.51377-6.09357-13.60753-13.60734-13.60753h-19.61721c-7.51377,0-13.60734,6.09376-13.60734,13.60753v89.63995h-34.3241v-102.78924c0-15.63102,12.66812-28.29933,28.2915-28.29933h58.88947c15.63102,0,28.29933,12.66831,28.29933,28.29933Z"
+                        />
+                        <path
+                            fill="#fff"
+                            d="M943.98639,80.64163v102.7967h-34.31646v-89.63976c0-7.51396-6.09357-13.60753-13.60753-13.60753h-19.62467c-7.51396,0-13.60753,6.09357-13.60753,13.60753v89.63976h-34.31646v-102.7967c0-15.62337,12.66812-28.29168,28.29168-28.29168h58.88929c15.62337,0,28.29168,12.66831,28.29168,28.29168Z"
+                        />
+                        <path
+                            fill="#fff"
+                            d="M156.59278,80.41251v102.78924h-34.04912v-89.63995c0-7.51377-6.09357-13.60753-13.60753-13.60753s-13.5997,6.09376-13.5997,13.60753v89.63995h-34.07224v-89.63995c0-7.51377-6.09357-13.60753-13.60753-13.60753s-13.60753,6.09376-13.60753,13.60753v89.63995H0v-102.78924c0-15.63102,12.66812-28.29933,28.29933-28.29933h21.02977v-.02293h55.49891v.02293h23.47328c15.62337,0,28.2915,12.66831,28.2915,28.29933Z"
+                        />
+                        <g>
+                            <path
+                                fill="#fff"
+                                d="M782.63617,183.20175c.03057.00746.06115.00746.09172.00746h20.31184c.01529,0,.03057,0,.04586-.00746h-20.44942Z"
+                            />
+                            <path
+                                fill="#fff"
+                                d="M805.87287,150.6873v-58.74443c0-15.43247-5.47519-25.91678-16.40245-31.48351-10.93472-5.5589-23.4427-8.33853-37.52357-8.33853-21.63305,0-36.88991,5.63533-45.77821,16.91382-2.72613,3.52031-4.87191,7.51396-6.43716,11.98114-.93176,2.65734,1.03076,5.45207,3.85607,5.45207h26.98594c1.25223,0,2.42057-.58799,3.20711-1.55779.00764-.00746.00764-.01529.01529-.01529,3.32922-3.91722,9.0106-5.87209,17.03612-5.87209,7.13961,0,12.5613,1.00037,16.25723,2.99328,3.6881,1.9931,5.53615,5.62023,5.53615,10.87394,0,4.29902-2.40547,7.47574-7.22369,9.50687-2.68045,1.18363-7.13216,2.15342-13.37095,2.94742l-11.47685,1.4051c-13.02718,1.64932-22.88547,4.39074-29.59742,8.22406-4.78783,2.75652-8.63644,6.18529-11.55347,10.27812-6.62041,9.30833-7.0175,19.31165-6.78839,23.91623.12211,2.45879.56506,9.85046,4.79548,16.87561,10.34673,17.21173,34.33939,17.1888,35.92757,17.16587,8.1631.33613,23.80176-.37397,36.11101-10.93472,1.51957-1.31357,2.8941-2.68027,4.12359-4.07773v15.00499h29.51334c1.57308-.16816,2.79474-1.50447,2.79474-3.13851v-26.16119c-.00746-1.12248-.00746-2.1991-.00746-3.21476ZM772.51073,132.16218c-.24441,10.06429-3.46681,17.00555-9.6672,20.80065-6.20058,3.80275-12.98132,5.71177-20.33496,5.71177-4.65025,0-8.59058-1.15305-11.82062-3.43623-3.23769-2.28318-4.85644-6.00968-4.85644-11.1411,0-5.78056,2.64969-10.03372,7.95673-12.78278,3.13086-1.61111,8.28521-2.99328,15.47833-4.11576l7.659-1.26752c3.83332-.6415,6.84953-1.32103,9.04099-2.06189,2.19929-.74068,4.37545-1.70283,6.54417-2.90156v11.19441Z"
+                            />
+                            <path
+                                fill="#fff"
+                                d="M805.90326,163.22567v19.97608h-2.81767c1.57308-.16816,2.79474-1.50447,2.79474-3.13851v-16.83757h.02293Z"
+                            />
+                        </g>
+                        <path
+                            fill="#fff"
+                            d="M1079.99254,150.6873v-58.74443c0-15.43247-5.47519-25.91678-16.40227-31.48351-10.93491-5.5589-23.44289-8.33853-37.52376-8.33853-21.63305,0-36.88991,5.63533-45.77821,16.91382-2.72613,3.52031-4.87191,7.51396-6.43716,11.98114-.93176,2.65734,1.03076,5.45207,3.85607,5.45207h26.98594c1.25223,0,2.42057-.58799,3.20711-1.55779.00764-.00746.00764-.01529.01529-.01529,3.32941-3.91722,9.0106-5.87209,17.03612-5.87209,7.1398,0,12.5613,1.00037,16.25723,2.99328,3.6881,1.9931,5.53615,5.62023,5.53615,10.87394,0,4.29902-2.40547,7.47574-7.22369,9.50687-2.68045,1.18363-7.13216,2.15342-13.37095,2.94742l-11.47685,1.4051c-13.02718,1.64932-22.88547,4.39074-29.59742,8.22406-4.78783,2.75652-8.63644,6.18529-11.55347,10.27812-6.62041,9.30833-7.0175,19.31165-6.78839,23.91623.12211,2.45879.56506,9.85046,4.79548,16.87561,10.34673,17.21173,34.33939,17.1888,35.92757,17.16587,8.1631.33613,23.80176-.37397,36.11101-10.93472,1.51193-1.30574,2.87881-2.66498,4.10066-4.0548l.01529-.01529v14.99735h32.31572v-29.2997c-.00746-1.12248-.00746-2.1991-.00746-3.21476ZM1046.63041,132.16218c-.24441,10.06429-3.46662,17.00555-9.6672,20.80065-6.20058,3.80275-12.98132,5.71177-20.33477,5.71177-4.65043,0-8.59058-1.15305-11.82081-3.43623-3.23769-2.28318-4.85644-6.00968-4.85644-11.1411,0-5.78056,2.64969-10.03372,7.95673-12.78278,3.13086-1.61111,8.28521-2.99328,15.47833-4.11576l7.659-1.26752c3.83332-.6415,6.84953-1.32103,9.04099-2.06189,2.19929-.74068,4.37564-1.70283,6.54417-2.90156v11.19441Z"
+                        />
+                        <path
+                            fill="#fff"
+                            d="M534.08822,55.28984v-19.15131c0-9.14906,7.41678-16.56584,16.56584-16.56584h.00003c9.14906,0,16.56584,7.41678,16.56584,16.56584v19.15131s17.66542,0,17.66542,0c1.72856,0,3.12984,1.40128,3.12984,3.12984v17.5897c0,1.72856-1.40128,3.12984-3.12984,3.12984h-17.66542v67.67358c0,5.24779.66456,8.51727,1.99676,9.80948,1.33118,1.2922,5.4047,1.93933,12.21851,1.93933,1.01735,0,2.09522-.01846,3.23154-.05948l3.34845-.11267v24.96198s-15.8613.58662-15.8613.58662c-15.82233.54765-26.6307-2.19162-32.42614-8.22396-3.7597-3.83662-5.63955-9.75102-5.63955-17.74013V55.28984Z"
+                        />
+                    </svg>
+
+                    {/* Description */}
+                    <p className="text-sm md:text-base leading-relaxed mb-6 text-gray-300">
                         Berkembang dan bertumbuh dengan transformasi digital.
                         Akselerasi pertumbuhan bisnis Anda dengan teknologi
                         digital yang mengubah cara kerja menjadi lebih efisien
                         dan optimal.
                     </p>
 
-                    {/* Social Media */}
-                    <div className="flex space-x-4 mt-4">
-                        <a href="#" target="_blank" className="hover:text-white">
-                            <i className="fab fa-facebook-f"></i>
+                    {/* CTA */}
+                    <Link
+                        href="#"
+                        className="inline-flex items-center text-white font-medium text-sm md:text-base group"
+                    >
+                        <span>Konsultasikan kebutuhan Anda sekarang</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M17 7l-9 9M7 7h10v10"
+                            />
+                        </svg>
+                    </Link>
+
+                    {/* Contact Info */}
+                    <div className="mt-10 space-y-3 text-sm">
+                        <p className="text-[#A4A7AE] font-semibold uppercase text-xs tracking-wider">
+                            Kontak Kami
+                        </p>
+
+                        <p className="flex items-start gap-2">
+                            <MapPin color="#0056D6" className="w-5 h-5 mt-0.5" />
+                            Besi Blok D12, Sukoharjo, Ngaglik, Sleman, D.I.
+                            Yogyakarta
+                        </p>
+
+                        <a
+                            href="mailto:info@mantrana.co.id"
+                            className="flex items-center gap-2 hover:text-white"
+                        >
+                            <Mail color="#0056D6" className="w-5 h-5" />
+                            info@mantrana.co.id
                         </a>
-                        <a href="https://www.instagram.com/mantrana.co.id/" target="_blank" className="hover:text-white">
-                            <i className="fab fa-instagram"></i>
+
+                        <a
+                            href="tel:+628112512192"
+                            className="flex items-center gap-2 hover:text-white"
+                        >
+                            <Phone color="#0056D6" className="w-5 h-5" />
+                            +62 811-2512-192
                         </a>
-                        <a href="#" target="_blank" className="hover:text-white">
-                            <i className="fab fa-twitter"></i>
-                        </a>
+                    </div>
+
+                    {/* Social */}
+                    <div className="mt-8">
+                        <p className="text-[#A4A7AE] font-semibold uppercase text-xs tracking-wider mb-2">
+                            Ikuti Kami
+                        </p>
+                        <div className="flex gap-3">
+                            {[
+                                {
+                                    href: "#",
+                                    Icon: Facebook,
+                                    label: "Facebook",
+                                },
+                                {
+                                    href: "https://www.instagram.com/mantrana.co.id/",
+                                    Icon: Instagram,
+                                    label: "Instagram",
+                                },
+                                {
+                                    href: "#",
+                                    Icon: FaXTwitter ,
+                                    label: "Twitter",
+                                },
+                            ].map(({ href, Icon, label }) => (
+                                <a
+                                    key={label}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
+                                    aria-label={label}
+                                    title={label}
+                                >
+                                    <Icon className="w-5 h-5 text-gray-200" />
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
-                {/* Services */}
+                {/* Middle Section */}
                 <div>
-                    <h6 className="text-white font-semibold mb-4">Services</h6>
-                    <ul className="space-y-2 text-sm">
-                        <li>
-                            <Link href="/s/custom-software" className="hover:text-white">Custom Software</Link>
-                        </li>
-                        <li>
-                            <Link href="/s/training-certification" className="hover:text-white">Training Certification</Link>
-                        </li>
-                        <li>
-                            <Link href="/s/it-consultant" className="hover:text-white">IT Consultant</Link>
-                        </li>
-                        <li>
-                            <Link href="/s/it-support" className="hover:text-white">IT Support</Link>
-                        </li>
-                        <li>
-                            <Link href="/s/digital-marketing" className="hover:text-white">Digital Marketing</Link>
-                        </li>
-                    </ul>
+                    {/* Solution */}
+                    <div className="mb-15">
+                        <h6 className="text-[#A4A7AE] font-semibold uppercase text-xs tracking-wider mb-4">
+                            Solution
+                        </h6>
+                        <ul className="space-y-3">
+                            {[
+                                { href: "/p/asset-management", label: "Asset Management" },
+                                { href: "/p/inventory", label: "Inventory" },
+                                { href: "/p/ticketing", label: "E-Ticketing" },
+                            ].map(({ href, label }) => (
+                                <li key={href}>
+                                    <Link
+                                        href={href}
+                                        className="group flex items-center text-sm hover:text-white"
+                                    >
+                                        <span className="w-2 h-2 bg-[#0056D6] rounded-full mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                                        <span className="font-lg text-lg text-white-700 group-hover:translate-x-2 transition-transform duration-300">
+                                            {label}
+                                        </span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Services */}
+                    <div className="mt-15">
+                        <h6 className="text-[#A4A7AE] font-semibold uppercase text-xs tracking-wider mb-4">
+                            Services
+                        </h6>
+                        <ul className="space-y-3">
+                            {[
+                                { href: "/p/custom-software", label: "Custom Software Development" },
+                                { href: "/p/system-integration", label: "System Integration" },
+                                { href: "/p/mobile-apps", label: "Mobile Apps" },
+                                { href: "/p/web-apps", label: "Web Applications" },
+                            ].map(({ href, label }) => (
+                                <li key={href}>
+                                    <Link
+                                        href={href}
+                                        className="group flex items-center text-sm hover:text-white"
+                                    >
+                                        <span className="w-2 h-2 bg-[#0056D6] rounded-full mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                                        <span className="font-lg text-lg text-white-700 group-hover:translate-x-2 transition-transform duration-300">
+                                            {label}
+                                        </span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
-                {/* Quick Links */}
+                {/* Right Section */}
                 <div>
-                    <h6 className="text-white font-semibold mb-4">Quick Links</h6>
-                    <ul className="space-y-2 text-sm">
-                        <li><Link href="/" className="hover:text-white">Home</Link></li>
-                        <li><Link href="/about-us" className="hover:text-white">About Us</Link></li>
-                        <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
-                    </ul>
-                </div>
-
-                {/* Get In Touch */}
-                <div>
-                    <h6 className="text-white font-semibold mb-4">Get In Touch</h6>
-                    <p className="text-sm mb-2">
-                        Besi Blok D12, Sukoharjo, Ngaglik, Sleman, D.I. Yogyakarta
-                    </p>
-                    <ul className="space-y-2 text-sm">
-                        <li>
-                            <a href="mailto:info@mantrana.co.id" className="hover:text-white">
-                                Email: info@mantrana.co.id
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tel:+628112512192" className="hover:text-white">
-                                Phone: +62 811-2512-192
-                            </a>
-                        </li>
+                    {/* Use Cases */}
+                    <h6 className="text-[#A4A7AE] font-semibold uppercase text-xs tracking-wider mb-4">
+                        Use Cases
+                    </h6>
+                    <ul className="space-y-3">
+                        {[
+                            { href: "/i/pariwisata", label: "Pariwisata" },
+                            { href: "/i/manufacturing", label: "Manufacturing" },
+                            { href: "/i/construction", label: "Construction" },
+                            { href: "/i/real-estate", label: "Real Estate" },
+                            { href: "/i/retail", label: "Retail" },
+                            { href: "/i/logistik", label: "Logistik" },
+                            { href: "/i/hotel", label: "Hotel" },
+                            { href: "/i/pendidikan", label: "Pendidikan" },
+                        ].map(({ href, label }) => (
+                            <li key={href}>
+                                <Link
+                                    href={href}
+                                    className="group flex items-center text-sm hover:text-white"
+                                >
+                                    <span className="w-2 h-2 bg-[#0056D6] rounded-full mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                                    <span className="font-lg text-lg text-white-700 group-hover:translate-x-2 transition-transform duration-300">
+                                        {label}
+                                    </span>
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
 
-            {/* Copyright */}
-            <div className="bg-gray-800 text-center py-4 text-sm text-gray-400">
-                © {new Date().getFullYear()} Mantrana Cipta Dharma.
+            {/* Footer Bottom */}
+            <div className="border-t border-white/10 mt-10 py-6 text-center text-sm text-gray-400">
+                © {new Date().getFullYear()} Mantrana. All rights reserved.
             </div>
         </footer>
     );
