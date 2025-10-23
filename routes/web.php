@@ -12,7 +12,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Solution
 Route::prefix('/p')
     ->group(function () {
-        Route::get('/asset-management-system', [HomeController::class, 'asset-management-system'])->name('asset-management-system');
+        Route::get('/asset-management-system', [HomeController::class, 'AssetManagementSystem'])->name('asset-management-system');
         Route::get('/inventory', [HomeController::class, 'inventory'])->name('inventory');
         Route::get('/ticketing', [HomeController::class, 'ticketing'])->name('ticketing');
     });

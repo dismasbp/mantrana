@@ -20,7 +20,7 @@ export default function GuestLayout({ title, description, children }: GuestLayou
         { 
             label: 'Solution',
             children: [
-                { label: 'Asset Management', href: '/p/asset-management' },
+                { label: 'Asset Management', href: '/p/asset-management-system' },
                 { label: 'Inventory', href: '/p/inventory' },
                 { label: 'E-Ticketing', href: '/p/ticketing' },
             ]

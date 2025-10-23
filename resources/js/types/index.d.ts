@@ -1,12 +1,13 @@
 import { InertiaLinkProps } from '@inertiajs/react';
 import { LucideIcon } from 'lucide-react';
+import { ReactNode } from 'react';
 
 export interface Auth {
     user: User;
 }
 
 export interface BreadcrumbItem {
-    title: string;
+    title: string | ReactNode | LucideIcon;
     href: string;
 }
 

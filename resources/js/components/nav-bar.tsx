@@ -23,10 +23,8 @@ export default function Navbar({ links }: NavbarProps) {
         if (window.scrollY < 0) return;
 
         if (window.scrollY > lastScrollY) {
-            // scroll ke bawah → sembunyikan navbar
             setShowNavbar(false);
         } else {
-            // scroll ke atas → tampilkan navbar
             setShowNavbar(true);
         }
         lastScrollY = window.scrollY;
@@ -41,7 +39,7 @@ export default function Navbar({ links }: NavbarProps) {
 
     return (
         <header className={`fixed top-0 w-full z-50 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}>
-            <div className="container mx-auto px-4 md:px-6 py-4">
+            <div className="container mx-auto px-4 md:px-6 py-4 bg-[#13161B]/80 backdrop-blur-sm">
                 <div className="flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="text-2xl font-bold">
@@ -128,7 +126,7 @@ export default function Navbar({ links }: NavbarProps) {
                     </button>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex space-x-6 relative bg-[#13161B]/80 backdrop-blur-sm px-6 py-6 rounded-md">
+                    <nav className="hidden lg:flex space-x-6 relative px-6 py-6 rounded-md">
                         {links.map((link, idx) => {
                             const isActive = url === link.href;
                             const hasChildren = link.children && link.children.length > 0;

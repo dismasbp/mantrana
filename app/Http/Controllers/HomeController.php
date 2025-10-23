@@ -19,6 +19,17 @@ class HomeController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function AssetManagementSystem()
+    {
+        return Inertia::render('solutions/asset-management-system', [
+            'title' => 'Asset Management System',
+            'description' => 'Empowering Society Through Digital Transformation'
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

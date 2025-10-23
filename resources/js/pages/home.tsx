@@ -32,32 +32,27 @@ export default function Home() {
         <GuestLayout>
             {/* Hero Section */}
             <section className="container mx-auto px-6 py-16 text-center">
-                <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[30rem] rounded-md overflow-hidden">
+                <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-[30rem] rounded-md overflow-hidden">
                     <div className="p-6 flex flex-col justify-center items-start relative z-10 text-white" style={{ fontFamily: 'Helvetica, sans-serif' }}>
-                        <h1 className="text-4xl md:text-6xl font-semibold mb-4 text-left drop-shadow-lg">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-4 text-left drop-shadow-lg w-ful">
                             Custom Software <span className="text-blue-500">ERP</span> untuk Tingkatkan Produktivitas Anda
                         </h1>
                         <p className="mb-10 text-gray-200 text-md text-left max-w-lg drop-shadow-md">
                             Optimalkan alur kerja bisnis di perusahaan Anda dengan integritas fitur ERP yang disesuaikan dengan kebutuhan Anda
                         </p>
-                        <Button
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg"
-                        >
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg">
                             Hubungi Kami
                         </Button>
                     </div>
 
                     <div
-                        className="hidden md:block bg-center bg-cover bg-no-repeat rounded-md"
+                        className="hidden lg:block bg-center bg-cover bg-no-repeat rounded-md"
                         style={{ backgroundImage: "url('/storage/assets/background/Home/hero-1.png')" }}
                     ></div>
 
                     <div
-                        className="absolute inset-0 bg-center bg-cover bg-no-repeat md:hidden"
-                        style={{
-                            backgroundImage:
-                                "url('/storage/assets/background/Home/hero-1.png')",
-                        }}
+                        className="absolute inset-0 bg-center bg-cover bg-no-repeat lg:hidden"
+                        style={{ backgroundImage: "url('/storage/assets/background/Home/hero-1.png')" }}
                     >
                         <div className="absolute inset-0 bg-black/60"></div>
                     </div>
@@ -338,7 +333,7 @@ export default function Home() {
             </section>
 
             {/* Client Section */}
-            <section className="py-16" style={{ fontFamily: 'Helvetica, sans-serif' }}>
+            <section className="pt-16" style={{ fontFamily: 'Helvetica, sans-serif' }}>
                 <div className="container mx-auto text-center">
                     <h2 className="text-4xl font-semibold mb-4">Perjalanan Digital Bersama Klien Kami</h2>
                     <p className="text-gray-400 text-md">
