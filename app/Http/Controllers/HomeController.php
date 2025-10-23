@@ -30,6 +30,17 @@ class HomeController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function CustomSoftware()
+    {
+        return Inertia::render('services/custom-software', [
+            'title' => 'Custom Software',
+            'description' => 'Empowering Society Through Digital Transformation'
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

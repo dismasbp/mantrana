@@ -47,7 +47,7 @@ export default function AssetManagementSystem() {
                         <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-500 text-white mr-3 flex-shrink-0">
                             <Plus size={20} />
                         </span>
-                        <span className="text-gray-400 font-medium" style={{ fontFamily: 'Helvetica, sans-serif' }}>Solution</span>
+                        <span className="text-gray-400 font-medium" style={{ fontFamily: 'Helvetica, sans-serif' }}>Solutions</span>
                     </div>
                     <div className="p-6 flex flex-col items-start relative text-white" style={{ fontFamily: 'Helvetica, sans-serif' }}>
                         <h2 className="text-2xl md:text-xl font-semibold mb-4">Kelola Aset Lebih Efektif dengan Asset Management System Terpercaya</h2>

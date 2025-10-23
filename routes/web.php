@@ -20,7 +20,7 @@ Route::prefix('/p')
 // Services
 Route::prefix('/s')
     ->group(function () {
-        Route::get('/custom-software', [HomeController::class, 'custom-software'])->name('custom-software');
+        Route::get('/custom-software', [HomeController::class, 'CustomSoftware'])->name('custom-software');
         Route::get('/it-consultant', [HomeController::class, 'it-consultant'])->name('it-consultant');
         Route::get('/it-support', [HomeController::class, 'it-support'])->name('it-support');
         Route::get('/training-certification', [HomeController::class, 'training-certification'])->name('training-certification');
