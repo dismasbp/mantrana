@@ -266,7 +266,7 @@ export default function Home() {
                             </div>
                         </div>
                     ))}
-                    </div>
+                </div>
             </section>
 
             {/* ERP Designed for All Industries */}
