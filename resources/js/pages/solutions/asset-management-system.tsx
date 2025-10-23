@@ -108,7 +108,7 @@ export default function AssetManagementSystem() {
 
                     <div className="relative rounded-md bg-[#0C0E12] flex justify-center items-center overflow-hidden order-first md:order-last">
                         <img
-                            src="/storage/assets/background/Asset_Management/hero-1.png"
+                            src="/storage/assets/background/Asset_Management/hero-1.jpg"
                             alt="Asset Management"
                             loading="lazy"
                             className="w-full h-full object-cover rounded-md transform translate-x-3 translate-y-3 shadow-[ -10px_-10px_20px_rgba(0,0,0,0),5px_5px_15px_rgba(0,0,0,0) ]"
@@ -177,7 +177,7 @@ export default function AssetManagementSystem() {
                     <div className="p-6 rounded-xl flex flex-col justify-center items-center relative text-white" style={{ fontFamily: 'Helvetica, sans-serif',  }}>
                         <div
                             className="absolute inset-0 bg-center bg-cover bg-no-repeat rounded-xl"
-                            style={{ backgroundImage: "url('/storage/assets/background/Asset_Management/hero-2.png')" }}
+                            style={{ backgroundImage: "url('/storage/assets/background/Asset_Management/hero-2.jpg')" }}
                         >
                         </div>
                         <div className="relative z-10 text-center">

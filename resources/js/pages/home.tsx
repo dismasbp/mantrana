@@ -47,12 +47,12 @@ export default function Home() {
 
                     <div
                         className="hidden lg:block bg-center bg-cover bg-no-repeat rounded-md"
-                        style={{ backgroundImage: "url('/storage/assets/background/Home/hero-1.png')" }}
+                        style={{ backgroundImage: "url('/storage/assets/background/Home/hero-1.jpg')" }}
                     ></div>
 
                     <div
                         className="absolute inset-0 bg-center bg-cover bg-no-repeat lg:hidden"
-                        style={{ backgroundImage: "url('/storage/assets/background/Home/hero-1.png')" }}
+                        style={{ backgroundImage: "url('/storage/assets/background/Home/hero-1.jpg')" }}
                     >
                         <div className="absolute inset-0 bg-black/60"></div>
                     </div>
@@ -104,7 +104,7 @@ export default function Home() {
 
                     <div className="relative rounded-md bg-[#181D27] flex justify-center items-center overflow-hidden order-first md:order-last">
                         <img
-                            src="/storage/assets/background/Home/hero-2-2.png"
+                            src="/storage/assets/background/Home/hero-2.jpg"
                             alt="Asset Management"
                             loading="lazy"
                             className="w-full h-full object-cover rounded-md transform translate-x-10 translate-y-10 shadow-[ -10px_-10px_20px_rgba(0,0,0,0.4),5px_5px_15px_rgba(0,0,0,0) ]"
@@ -116,7 +116,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20">
                     <div className="relative rounded-md bg-[#181D27] flex justify-center items-center overflow-hidden">
                         <img
-                            src="/storage/assets/background/Home/hero-3-2.png"
+                            src="/storage/assets/background/Home/hero-3.jpg"
                             alt="Inventory Management"
                             loading="lazy"
                             className="w-full h-full object-cover rounded-md transform -translate-x-10 translate-y-10 shadow-[ -10px_-10px_20px_rgba(0,0,0,0.4),5px_5px_15px_rgba(0,0,0,0) ]"
@@ -192,7 +192,7 @@ export default function Home() {
 
                     <div className="relative rounded-md bg-[#181D27] flex justify-center items-center overflow-hidden order-first md:order-last">
                         <img
-                            src="/storage/assets/background/Home/hero-4-2.png"
+                            src="/storage/assets/background/Home/hero-4.jpg"
                             alt="Ticketing Management"
                             loading="lazy"
                             className="w-full h-full object-cover rounded-md transform translate-x-10 translate-y-10 shadow-[ -10px_-10px_20px_rgba(0,0,0,0.4),5px_5px_15px_rgba(0,0,0,0) ]"
