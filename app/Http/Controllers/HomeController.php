@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Article;
 
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a Home Page of the resource.
      */
     public function index()
     {
@@ -19,7 +20,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a Asset Management System Page of the resource.
      */
     public function assetManagementSystem()
     {
@@ -30,7 +31,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a Custom Software Page of the resource.
      */
     public function customSoftware()
     {
@@ -41,12 +42,27 @@ class HomeController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a Pariwisata Page of the resource.
      */
     public function pariwisata()
     {
         return Inertia::render('use-cases/pariwisata', [
             'title' => 'Pariwisata',
+            'description' => 'Empowering Society Through Digital Transformation'
+        ]);
+    }
+
+    /**
+     * Display a Blog Main Page of the resource.
+     */
+    public function blogMain()
+    {
+        $articles = Article::orderBy('created_at', 'desc')
+            ->take(7)
+            ->get(['id', 'title', 'slug', 'photo', 'photo_alt', 'photo_caption', 'created_at']);
+        return Inertia::render('blogs/mainpage', [
+            'articles' => $articles,
+            'title' => 'Blog Main Page',
             'description' => 'Empowering Society Through Digital Transformation'
         ]);
     }

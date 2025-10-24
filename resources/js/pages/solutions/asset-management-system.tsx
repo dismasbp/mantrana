@@ -44,7 +44,7 @@ export default function AssetManagementSystem() {
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-md overflow-hidden">
                     <div className="p-6 items-start relative text-white flex flex-row" style={{ fontFamily: 'Helvetica, sans-serif' }}>
-                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-500 text-white mr-3 flex-shrink-0">
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-500 text-black mr-3 flex-shrink-0">
                             <Plus size={20} />
                         </span>
                         <span className="text-gray-400 font-medium" style={{ fontFamily: 'Helvetica, sans-serif' }}>Solutions</span>
