@@ -12,7 +12,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Solution
 Route::prefix('/p')
     ->group(function () {
-        Route::get('/asset-management-system', [HomeController::class, 'AssetManagementSystem'])->name('asset-management-system');
+        Route::get('/asset-management-system', [HomeController::class, 'assetManagementSystem'])->name('asset-management-system');
         Route::get('/inventory', [HomeController::class, 'inventory'])->name('inventory');
         Route::get('/ticketing', [HomeController::class, 'ticketing'])->name('ticketing');
     });
@@ -20,7 +20,7 @@ Route::prefix('/p')
 // Services
 Route::prefix('/s')
     ->group(function () {
-        Route::get('/custom-software', [HomeController::class, 'CustomSoftware'])->name('custom-software');
+        Route::get('/custom-software', [HomeController::class, 'customSoftware'])->name('custom-software');
         Route::get('/it-consultant', [HomeController::class, 'it-consultant'])->name('it-consultant');
         Route::get('/it-support', [HomeController::class, 'it-support'])->name('it-support');
         Route::get('/training-certification', [HomeController::class, 'training-certification'])->name('training-certification');

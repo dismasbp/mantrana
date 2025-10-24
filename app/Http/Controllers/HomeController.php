@@ -21,7 +21,7 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function AssetManagementSystem()
+    public function assetManagementSystem()
     {
         return Inertia::render('solutions/asset-management-system', [
             'title' => 'Asset Management System',
@@ -32,10 +32,21 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function CustomSoftware()
+    public function customSoftware()
     {
         return Inertia::render('services/custom-software', [
             'title' => 'Custom Software',
+            'description' => 'Empowering Society Through Digital Transformation'
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function pariwisata()
+    {
+        return Inertia::render('use-cases/pariwisata', [
+            'title' => 'Pariwisata',
             'description' => 'Empowering Society Through Digital Transformation'
         ]);
     }

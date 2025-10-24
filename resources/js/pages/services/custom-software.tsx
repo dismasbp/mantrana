@@ -5,7 +5,7 @@ import { Link } from "@inertiajs/react";
 import "swiper/css";
 import "swiper/css/grid";
 
-export default function AssetManagementSystem() {
+export default function CustomSoftware() {
     return (
         <GuestLayout>
             {/* Hero Section */}
