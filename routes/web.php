@@ -44,10 +44,13 @@ Route::prefix('/i')
 Route::prefix('/blog')
     ->group(function () {
         Route::get('/', [HomeController::class, 'blogMain'])->name('blog');
-        // Route::get('/cat/{slug}', [BlogController::class, 'category'])->name('blog.category');
-        // Route::get('/tags/{slug}', [BlogController::class, 'tag'])->name('blog.tag');
-        // Route::get('/z/{slug}', [HomeController::class, 'articleDetail'])->name('blog.detail');
+        Route::get('/cat/{slug}', [HomeController::class, 'category'])->name('blog.category');
+        Route::get('/tags/{slug}', [HomeController::class, 'tag'])->name('blog.tag');
+        Route::get('/z/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
     });
+
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {

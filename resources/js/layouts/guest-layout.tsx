@@ -49,9 +49,9 @@ export default function GuestLayout({ title, description, children }: GuestLayou
             ]
         },
         { label: 'Blog', href: '/blog' },
-        { label: 'About Us', href: '/about-us' },
+        { label: 'About Us', href: '/about' },
         // { label: 'Insight', href: '/insight' },
-        // { label: 'Contact', href: '/contact' },
+        { label: 'Contact', href: '/contact' },
     ];
 
     return (

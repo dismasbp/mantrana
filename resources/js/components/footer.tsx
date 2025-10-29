@@ -1,12 +1,9 @@
 import { Link } from "@inertiajs/react";
 import {
-    Facebook,
-    Instagram,
-    Phone,
     Mail,
     MapPin,
 } from "lucide-react";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaXTwitter, FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa6";
 
 export default function Footer() {
     return (
@@ -131,7 +128,7 @@ export default function Footer() {
                             href="tel:+628112512192"
                             className="flex items-center gap-2 hover:text-white"
                         >
-                            <Phone color="#0056D6" className="w-5 h-5" />
+                            <FaWhatsapp color="#0056D6" className="w-5 h-5" />
                             +62 811-2512-192
                         </a>
                     </div>
@@ -145,12 +142,12 @@ export default function Footer() {
                             {[
                                 {
                                     href: "#",
-                                    Icon: Facebook,
+                                    Icon: FaFacebook,
                                     label: "Facebook",
                                 },
                                 {
                                     href: "https://www.instagram.com/mantrana.co.id/",
-                                    Icon: Instagram,
+                                    Icon: FaInstagram,
                                     label: "Instagram",
                                 },
                                 {

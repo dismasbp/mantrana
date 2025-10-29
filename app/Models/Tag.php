@@ -40,6 +40,6 @@ class Tag extends Model
      */
     public function articles()
     {
-        return $this->belongsToMany(Article::class, 'tag_relations');
+        return $this->belongsToMany(Article::class, 'tag_relations', 'tag_id', 'article_id');
     }
 }
