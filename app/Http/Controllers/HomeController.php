@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Article;
 use App\Models\Tag;
 use App\Models\Category;
+use App\Models\Client;
 
 class HomeController extends Controller
 {
@@ -15,7 +16,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $clients = Client::where('status', true)
+            ->select('id', 'name', 'image')
+            ->orderBy('id', 'asc')
+            ->get();
+
         return Inertia::render('home', [
+            'clients' => $clients,
             'title' => 'Software ERP Indonesia, Custom Sesuai Kebutuhan Bisnis Anda',
             'description' => 'Custom software ERP sesuai dengan kebutuhan perusahaan Anda. Kembangkan fitur yang tepat untuk kelola bisnis secara otomatis & dapatkan penawaran terbaik.'
         ]);
@@ -26,7 +33,13 @@ class HomeController extends Controller
      */
     public function assetManagementSystem()
     {
+        $clients = Client::where('status', true)
+            ->select('id', 'name', 'image')
+            ->orderBy('id', 'desc')
+            ->get();
+
         return Inertia::render('solutions/asset-management-system', [
+            'clients' => $clients,
             'title' => 'Asset Management Software​, Custom sesuai Kebutuhan Bisnis Anda',
             'description' => 'Custom asset management software untuk kebutuhan perusahaan. Kelola pelacakan, pemeliharaan, & pengoptimalan bisnis lebih mudah. Dapatkan penawaran harga terbaik.'
         ]);
@@ -48,7 +61,23 @@ class HomeController extends Controller
      */
     public function pariwisata()
     {
+        $startYear = now()->subYears(5)->startOfYear();
+        $endYear = now()->endOfYear();
+
+        $clients = Client::where('status', true)
+            ->whereBetween('created_at', [$startYear, $endYear])
+            ->select('id', 'name', 'image')
+            ->orderBy('id', 'desc')
+            ->get()
+            ->map(function ($client) {
+                $client->year = $client->created_at
+                    ? $client->created_at->format('Y')
+                    : now()->format('Y');
+                return $client;
+            });
+
         return Inertia::render('use-cases/pariwisata', [
+            'clients' => $clients,
             'title' => 'Software for Tourism Industry, Custom Kebutuhan Bisnis Anda',
             'description' => 'Kelola bisnis pariwisata lebih optimal & efisien dengan custom software yang disesuaikan kebutuhan perusahaan Anda. Dapatkan penawaran harga terbaik sekarang.'
         ]);
@@ -184,6 +213,17 @@ class HomeController extends Controller
         return Inertia::render('about', [
             'title' => 'Tentang Mantrana',
             'description' => 'About Mantrana.'
+        ]);
+    }
+
+    /**
+     * Display a Contact Page of the resource.
+     */
+    public function contact()
+    {
+        return Inertia::render('contact', [
+            'title' => 'Hubungi Kami Mantrana',
+            'description' => 'Hubungi Kami Mantrana.'
         ]);
     }
 

@@ -1,25 +1,20 @@
 import GuestLayout from "@/layouts/guest-layout";
 import { Plus, Check, Layers, Archive } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import "swiper/css";
 import "swiper/css/grid";
 
+interface Client {
+    id: number;
+    name: string;
+    image: string;
+    year: string;
+}
+
 export default function Pariwisata() {
-    const clients = [
-        { img: "/storage/assets/client/client-1.png", label: "18 Hole", year: "2025" },
-        { img: "/storage/assets/client/client-2.png", label: "Acer", year: "2025" },
-        { img: "/storage/assets/client/client-3.png", label: "Asterra Machine", year: "2024" },
-        { img: "/storage/assets/client/client-4.png", label: "Brain Academy", year: "2024" },
-        { img: "/storage/assets/client/client-5.png", label: "BYD", year: "2023" },
-        { img: "/storage/assets/client/client-6.png", label: "Dewaweb", year: "2023" },
-        { img: "/storage/assets/client/client-7.png", label: "Digitalkie", year: "2022" },
-        { img: "/storage/assets/client/client-8.png", label: "Djarum Super", year: "2022" },
-        { img: "/storage/assets/client/client-9.png", label: "eCampuz", year: "2021" },
-        { img: "/storage/assets/client/client-10.png", label: "ERP Solution", year: "2021" },
-        { img: "/storage/assets/client/client-11.png", label: "Fisiohome", year: "2020" },
-        { img: "/storage/assets/client/client-12.png", label: "Gamatechno", year: "2020" },
-    ];
+    const { clients } = usePage<{ clients: Client[] }>().props;
+
     return (
         <GuestLayout>
             {/* Hero Section */}
@@ -194,7 +189,9 @@ export default function Pariwisata() {
                     </div>
 
                     <div className="py-6">
-                        <p className="text-md mb-10 text-gray-400 text-right lg:text-left">(2020 – 25 ©)</p>
+                        <p className="text-md mb-10 text-gray-400 text-right lg:text-left">
+                            ({new Date().getFullYear() - 5} – {String(new Date().getFullYear()).slice(2)} ©)
+                        </p>
                     </div>
                 </div>
 
@@ -207,8 +204,8 @@ export default function Pariwisata() {
                                 className="relative bg-[#0C0E12] rounded-2xl flex justify-center items-center p-6 aspect-square shadow-md hover:shadow-lg transition-all"
                             >
                                 <img
-                                    src={client.img}
-                                    alt={client.img}
+                                    src={`/storage/${client.image}`}
+                                    alt={client.name}
                                     loading="lazy"
                                     className="h-10 md:h-14 object-contain"
                                 />

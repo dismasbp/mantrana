@@ -66,4 +66,6 @@ require __DIR__.'/office/category.php';
 require __DIR__.'/office/tag.php';
 require __DIR__.'/office/role.php';
 require __DIR__.'/office/sitemap.php';
+require __DIR__.'/office/client.php';
+require __DIR__.'/office/lead.php';
 require __DIR__.'/office/ckeditor.php';

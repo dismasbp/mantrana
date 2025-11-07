@@ -2,7 +2,7 @@ import GuestLayout from "@/layouts/guest-layout";
 import { Plus, Percent, ArrowUpRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Separator } from '@/components/ui/separator';
-import { Link } from "@inertiajs/react";
+// import { Link } from "@inertiajs/react";
 
 export default function About() {
     return (
@@ -22,7 +22,7 @@ export default function About() {
                             About Mantrana
                         </h1>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-md overflow-hidden">
-                            <div className="items-center relative text-white flex flex-row" style={{ fontFamily: 'Helvetica, sans-serif' }}>
+                            <div className="items-center relative text-white flex flex-row">
                                 <span className="inline-flex items-center justify-center rounded-full bg-gray-500 text-black mr-3 flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8">
                                     <Plus className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                                 </span>
@@ -30,10 +30,10 @@ export default function About() {
                                     About
                                 </span>
                             </div>
-                            <div className="flex flex-col items-start relative text-white" style={{ fontFamily: 'Helvetica, sans-serif' }}>
+                            <div className="flex flex-col items-start relative text-white">
                                 <h2 className="text-md md:text-lg font-semibold md:mb-4">Transformasi Digital untuk Masa Depan Bisnis Anda</h2>
                             </div>
-                            <div className="flex flex-col items-start relative text-gray-400" style={{ fontFamily: 'Helvetica, sans-serif' }}>
+                            <div className="flex flex-col items-start relative text-gray-400">
                                 <p>Kami membangun solusi digital yang memberdayakan bisnis di era transformasi.</p>
                             </div>
                         </div>
@@ -96,7 +96,7 @@ export default function About() {
                 <div className="relative w-full min-h-[450px] md:min-h-[600px] rounded-2xl overflow-hidden px-10 py-4 bg-cover bg-center" style={{ backgroundImage: `url(/storage/assets/background/About/hero-1.jpg)` }}></div>
             </section>
 
-            <section className="container mx-auto py-3" style={{ fontFamily: 'Helvetica, sans-serif' }}>
+            <section className="container mx-auto py-3">
                 <Separator/>
             </section>
 

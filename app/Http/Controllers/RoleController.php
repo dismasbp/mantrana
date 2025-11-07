@@ -57,9 +57,8 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Role $role)
     {
-        $role               = Role::findOrFail($id);
         $permissions        = Permission::all();
         $rolePermissions    = $role->permissions->pluck('name');
         return Inertia::render('office/role/edit', [
@@ -72,9 +71,8 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Role $role)
     {
-        $role               = Role::findOrFail($id);
         $data = $request->validate([
             'name' => 'required|string|unique:roles,name,' . $role->id,
             'permissions' => 'array',
@@ -89,7 +87,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Role $role)
     {
         $role->delete();
         return redirect()->back()->with('success', 'Role deleted.');

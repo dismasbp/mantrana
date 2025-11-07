@@ -5,28 +5,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import "swiper/css/grid";
+import { usePage } from "@inertiajs/react";
+
+interface Client {
+    id: number;
+    name: string;
+    image: string;
+}
 
 export default function Home() {
-    const clients = [
-        { img: "/storage/assets/client/client-1.png", label: "18 Hole" },
-        { img: "/storage/assets/client/client-2.png", label: "Acer" },
-        { img: "/storage/assets/client/client-3.png", label: "Asterra Machine" },
-        { img: "/storage/assets/client/client-4.png", label: "Brain Academy" },
-        { img: "/storage/assets/client/client-5.png", label: "BYD" },
-        { img: "/storage/assets/client/client-6.png", label: "Dewaweb" },
-        { img: "/storage/assets/client/client-7.png", label: "Digitalkie" },
-        { img: "/storage/assets/client/client-8.png", label: "Djarum Super" },
-        { img: "/storage/assets/client/client-9.png", label: "eCampuz" },
-        { img: "/storage/assets/client/client-10.png", label: "ERP Solution" },
-        { img: "/storage/assets/client/client-11.png", label: "Fisiohome" },
-        { img: "/storage/assets/client/client-12.png", label: "Gamatechno" },
-        { img: "/storage/assets/client/client-13.png", label: "Hyundai" },
-        { img: "/storage/assets/client/client-14.png", label: "Kasdana" },
-        { img: "/storage/assets/client/client-15.png", label: "Mazda" },
-        { img: "/storage/assets/client/client-16.png", label: "Mela" },
-        { img: "/storage/assets/client/client-17.png", label: "Morinaga" },
-        { img: "/storage/assets/client/client-18.png", label: "Mustika Land" },
-    ];
+    const { clients } = usePage<{ clients: Client[] }>().props;
 
     return (
         <GuestLayout>
@@ -354,11 +342,11 @@ export default function Home() {
                         }}
                     >
                         {clients.map((client, i) => (
-                            <SwiperSlide key={i} className="flex justify-center items-center">
+                            <SwiperSlide key={client.id ?? i} className="flex justify-center items-center">
                                 <div className="p-4 bg-[#000] rounded-2xl flex justify-center items-center">
                                     <img
-                                        src={client.img}
-                                        alt={client.label}
+                                        src={`/storage/${client.image}`}
+                                        alt={client.name}
                                         loading="lazy"
                                         className="h-12 md:h-16 object-contain"
                                     />

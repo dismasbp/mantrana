@@ -14,7 +14,7 @@ import { dashboard } from '@/routes';
 import office from '@/routes/office'
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Rss, User, FileCode2  } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, Rss, User, Users, FileCode2  } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -62,6 +62,11 @@ const mainNavItems: NavItem[] = [
         title: 'Sitemap',
         href: office.sitemap.index(),
         icon: FileCode2,
+    },
+    {
+        title: 'Client',
+        href: office.client.index(),
+        icon: Users,
     },
 ];
 
