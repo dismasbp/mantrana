@@ -8,6 +8,8 @@ use App\Models\Article;
 use App\Models\Tag;
 use App\Models\Category;
 use App\Models\Client;
+use App\Models\User;
+use App\Models\Lead;
 
 class HomeController extends Controller
 {
@@ -221,10 +223,33 @@ class HomeController extends Controller
      */
     public function contact()
     {
+        $users = User::role('marketing')->get();
         return Inertia::render('contact', [
+            'users' => $users,
             'title' => 'Hubungi Kami Mantrana',
             'description' => 'Hubungi Kami Mantrana.'
         ]);
+    }
+
+
+    /**
+     * Show the form for creating a new leads.
+     */
+    public function contactForm(Request $request)
+    {
+        $validated = $request->validate([
+            'fullname' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'nullable|string|max:20',
+            'company' => 'nullable|string|max:255',
+            'product' => 'nullable|string|max:255',
+            'message' => 'nullable|string|max:1000',
+        ]);
+
+        // Contoh: simpan ke database
+        Lead::create($validated);
+
+        return back()->with('success', 'Pesan berhasil dikirim!');
     }
 
     /**
