@@ -50,7 +50,12 @@ Route::prefix('/blog')
     });
 
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+// Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::prefix('contact')
+    ->group(function () {
+        Route::get('/', [HomeController::class, 'contact'])->name('contact');
+        Route::post('/', [HomeController::class, 'contactform'])->name('contact.form');
+    });
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
