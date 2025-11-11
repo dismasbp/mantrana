@@ -13,7 +13,7 @@ Mantrana showcases company information, services, and portfolio in a responsive,
 - Tailwind CSS
 
 **Backend:**
-- Laravel 12 (PHP 8.x)  
+- Laravel 12 (PHP 8.2.0)
 - MySQL Database
 
 **Server:**
